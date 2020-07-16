@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <title>Connecting Line</title>
+  <link rel="stylesheet" type="text/css" href="style/main.css">
+  <link rel="shorcut icon" href="favicon.ico">
+</head>
+<body>
+  <h1 class="title">Connecting Lines</h1>
+  <div class="container">
+    <div class="game-info">
+      <div class="game-score">
+        <p title="The number of moves that you have made til the moment">
+          <span class="moves-label">Your moves:</span>
+          <strong><span id="moves-value">0</span></strong>
+        </p>
+        <p title="The most optimal steps that you can do to solve the current board">
+          <span class="remaining-label">Min remaining steps:</span>
+          <strong><span id="remaining-value">0</span></strong>
+        </p>
+      </div>
+      <hr>
+      <a href="how-to-play.html"><button>How to Play?</button></a>
+      <br>
+      <button id="play-button">Play Game!</button>
+      <br>
+      <button style="display: hidden" id="give-up-button">Give up!</button>
+    </div>
+    <div class="game-arena">
+      <table class="grid-container">
+        <tbody>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0010.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000-ok.png"></td>
+            <td class="grid-cell"><img src="img/cell-0110.png"></td>
+            <td class="grid-cell"><img src="img/cell-0011.png"></td>
+            <td class="grid-cell"><img src="img/cell-0110.png"></td>
+            <td class="grid-cell"><img src="img/cell-0011.png"></td>
+            <td class="grid-cell"><img src="img/cell-0110.png"></td>
+            <td class="grid-cell"><img src="img/cell-0001.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1010-ok.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1010-ok.png"></td>
+            <td class="grid-cell"><img src="img/cell-1010-ok.png"></td>
+            <td class="grid-cell"><img src="img/cell-1010-ok.png"></td>
+            <td class="grid-cell"><img src="img/cell-1110.png"></td>
+            <td class="grid-cell"><img src="img/cell-1001.png"></td>
+            <td class="grid-cell"><img src="img/cell-1100.png"></td>
+            <td class="grid-cell"><img src="img/cell-0011.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1100.png"></td>
+            <td class="grid-cell"><img src="img/cell-0001.png"></td>
+            <td class="grid-cell"><img src="img/cell-1000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1000.png"></td>
+            <td class="grid-cell"><img src="img/cell-1100.png"></td>
+            <td class="grid-cell"><img src="img/cell-0001.png"></td>
+            <td class="grid-cell"><img src="img/cell-0100.png"></td>
+            <td class="grid-cell"><img src="img/cell-1001.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+          <tr class="grid-row">
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+            <td class="grid-cell"><img src="img/cell-0000.png"></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/application.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+html {
+}
+
+body {
+  background-color: lightblue;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-family: courier  
+}
+
+.title {
+  text-decoration: none;
+  color: indianred;
+  text-align: center;
+  font-family: courier
+}
+
+p {
+  font-family: courier;
+  font-size: 13px;
+  margin: 7px;
+}
+
+div.container {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: lightskyblue;
+  align-items: center;
+  width: 80%;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  padding: 20px;
+}
+
+div.game-info {
+  float: left;
+  width: 20%;
+}
+
+div.game-arena {
+  float: right;
+  width: 80%;
+}
+
+div.game-score {
+  margin: 7px;
+}
+
+table.grid-container, tr.grid-row, td.grid-cell {
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+}
+
+table.grid-container {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td.grid-cell {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+img {
+  margin: 0;
+  width: 70px;
+  height: 70px
+}
+
+.grid-cell {
+
+}
