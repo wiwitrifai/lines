@@ -15,7 +15,7 @@ class PriorityQueue {
 
   push(priority, element) {
     let elem = new PqElement(priority, element);
-    if (this.items.length < this.length)
+    if (this.items.length <= this.length)
       this.items.push(elem);
     else
       this.items[this.length] = elem;

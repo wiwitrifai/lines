@@ -25,6 +25,11 @@ class MinCostMaxFlow {
       this.graph[i] = [];
   }
 
+  clear() {
+    for (let i = 0; i < this.nodes; ++i)
+      this.graph[i].length = 0;
+  }
+
   addEdge(from, to, cap, cost) {
     let a = new Edge(to, cap, 0, cost, this.graph[to].length);
     let b = new Edge(from, 0, 0, -cost, this.graph[from].length);
@@ -86,12 +91,15 @@ class MinCostMaxFlow {
         }
       }
       if (this.priority[sink] == 1000000000) break;
+      for (let i = 0; i < this.nodes; ++i) {
+        this.potential[i] += this.priority[i];
+      }
       let df = this.curflow[sink];
       flow += df;
       for (let v = sink; v != source; v = this.prevnode[v]) {
         let e = this.graph[this.prevnode[v]][this.prevedge[v]];
         e.flow += df;
-        this.graph[v][e.rev] -= df;
+        this.graph[v][e.rev].flow -= df;
         cost += e.cost * df;
       }
     }
