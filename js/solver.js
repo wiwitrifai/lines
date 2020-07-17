@@ -1,4 +1,4 @@
-const MinCostMaxFlow = require('./mincost_maxflow.js');
+"use strict";
 
 class Solver {
   constructor(height, width) {
@@ -158,5 +158,3 @@ class Solver {
     return board;
   }
 }
-
-module.exports = Solver;

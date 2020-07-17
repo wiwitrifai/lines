@@ -20,8 +20,8 @@ h1 {
 
 p {
   font-family: courier;
-  font-size: 13px;
-  margin: 7px;
+  font-size: 12px;
+  margin: 6px;
 }
 
 div.container {
@@ -74,6 +74,33 @@ img {
   height: 70px
 }
 
-.grid-cell {
+#how-to-play-button {
+  display: block;
+  vertical-align: middle;
+  background-color: mintcream;
+  width: 100%;
+}
 
+a {
+  text-decoration: none;
+}
+
+#start-button {
+  display: block;
+  vertical-align: middle;
+  background-color: lightgreen;
+  width: 100%;
+}
+
+#give-up-button {
+  display: block;
+  vertical-align: middle;
+  background-color: lightcoral;
+  width: 100%;
+}
+
+.message {
+  text-align: center;
+  font-family: courier;
+  font-size: 40px;
 }

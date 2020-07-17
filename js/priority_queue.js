@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 class PqElement {
   constructor(priority, element) {
@@ -56,5 +56,3 @@ class PriorityQueue {
     return top;
   }
 }
-
-module.exports = PriorityQueue;

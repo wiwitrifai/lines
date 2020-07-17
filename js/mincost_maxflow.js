@@ -1,6 +1,4 @@
-"use strict"
-
-const PriorityQueue = require('./priority_queue.js');
+"use strict";
 
 class Edge {
   constructor(to, cap, flow, cost, rev) {
@@ -106,5 +104,3 @@ class MinCostMaxFlow {
     return { 'flow': flow, 'cost': cost };
   }
 }
-
-module.exports = MinCostMaxFlow;

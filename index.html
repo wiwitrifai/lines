@@ -7,25 +7,36 @@
   <link rel="shorcut icon" href="favicon.ico">
 </head>
 <body>
-  <h1 class="title">Connecting Lines</h1>
+  <a href=""><h1 class="title">Connecting Lines</h1></a>
   <div class="container">
     <div class="game-info">
       <div class="game-score">
         <p title="The number of moves that you have made til the moment">
           <span class="moves-label">Your moves:</span>
-          <strong><span id="moves-value">0</span></strong>
+          <big><strong><span id="moves-value">0</span></strong></big>
         </p>
         <p title="The most optimal steps that you can do to solve the current board">
           <span class="remaining-label">Min remaining steps:</span>
-          <strong><span id="remaining-value">0</span></strong>
+          <big><strong><span id="remaining-value">0</span></strong></big>
+        </p>
+        <p title="The number of unoptimal moves that you have made">
+          <span class="wasting-label">Wasting steps:</span>
+          <big><strong><span id="wasting-value">0</span></strong></big>
         </p>
       </div>
       <hr>
-      <a href="how-to-play.html"><button>How to Play?</button></a>
+      <a href="how-to-play.html"><button id="how-to-play-button">How to Play?</button></a>
+      <p>You have to rotate some cells so that the black lines can only end at any red dot.</p>
+      <ul>
+      <li><p>right-click = rotate clockwise</p></li>
+      <li><p>left-click = rotate counter clockwise</p></li>
+      </ul>
+      <hr>
+      <button id="start-button">Start Game!</button>
       <br>
-      <button id="play-button">Play Game!</button>
+      <button id="give-up-button">Give up!</button>
       <br>
-      <button style="display: hidden" id="give-up-button">Give up!</button>
+      <p class="message" style="visibility: hidden;"> You win!! </p>
     </div>
     <div class="game-arena">
       <table class="grid-container">
@@ -126,6 +137,12 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="js/priority_queue.js"></script>
+  <script type="text/javascript" src="js/mincost_maxflow.js"></script>
+  <script type="text/javascript" src="js/solver.js"></script>
+  <script type="text/javascript" src="js/generator.js"></script>
+  <script type="text/javascript" src="js/display_processor.js"></script>
+  <script type="text/javascript" src="js/game_controller.js"></script>
   <script type="text/javascript" src="js/application.js"></script>
 </body>
 </html>
