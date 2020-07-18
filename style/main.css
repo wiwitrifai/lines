@@ -74,29 +74,31 @@ img {
   height: 70px
 }
 
-#how-to-play-button {
+button {
   display: block;
   vertical-align: middle;
-  background-color: mintcream;
   width: 100%;
+  margin: 10px 0px;
 }
+
 
 a {
   text-decoration: none;
 }
 
+#how-to-play-button {
+  background-color: mintcream;
+}
 #start-button {
-  display: block;
-  vertical-align: middle;
   background-color: lightgreen;
-  width: 100%;
 }
 
 #give-up-button {
-  display: block;
-  vertical-align: middle;
   background-color: lightcoral;
-  width: 100%;
+}
+
+#check-answer-button {
+  background-color: deepskyblue;
 }
 
 .message {

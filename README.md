@@ -8,7 +8,7 @@ You can play this game at [http://wiwitrifai.github.io/lines](http://wiwitrifai.
 
 You will be given a 7x11 grid where each cell is one of the following types:
 
-- <img src="https://raw.githubusercontent.com/wiwitrifai/lines/master/img/cell-0000.png" alt="Type-0" width="50">)
+- <img src="https://raw.githubusercontent.com/wiwitrifai/lines/master/img/cell-0000.png" alt="Type-0" width="50">
 - <img src="https://raw.githubusercontent.com/wiwitrifai/lines/master/img/cell-1000.png" alt="Type-1" width="50">
 - <img src="https://raw.githubusercontent.com/wiwitrifai/lines/master/img/cell-1100.png" alt="Type-2" width="50">
 - <img src="https://raw.githubusercontent.com/wiwitrifai/lines/master/img/cell-1110.png" alt="Type-3" width="50">

@@ -12,41 +12,64 @@ class GameController {
     this.solver = new Solver(this.height, this.width);
     this.display = new DisplayProcessor();
     this.display.addStartEvent(this.start.bind(this));
+    this.display.addGiveUpEvent(this.giveUp.bind(this));
+    this.display.addCheckAnswerEvent(this.checkAnswer.bind(this));
     this.count = 0;
   }
 
   start() {
-    this.display.addGiveUpEvent(this.giveUp.bind(this));
     this.board = this.generator.randomBoard();
+    this.initialBoard = JSON.parse(JSON.stringify(this.board));
     this.count = 0;
-    this.initial = this.solver.solve(this.board);
+    this.initialRequiredSteps = this.solver.solve(this.board);
     this.display.render(
       this.board,
       {
         moves: this.count,
-        remaining: this.initial,
+        remaining: this.initialRequiredSteps,
         wasting: 0
       },
       this.rotate.bind(this)
     );
+
     this.display.updateMessage(null);
+    this.display.showGiveUpButton();
+    this.display.hideCheckAnswerButton();
   }
 
   giveUp() {
-    console.log("Give up");
-    this.display.updateMessage("You lose!");
+    this.count += this.solver.steps;
+    this.solver.steps = 0;
     this.solve();
-    this.display.removeGiveUpEvent();
+    this.display.hideGiveUpButton();
+    this.display.showCheckAnswerButton();
+    this.display.updateMessage("You lose!");
+  }
+
+  checkAnswer() {
+    this.solver.solve(this.initialBoard);
+    this.solver.steps = 0;
+    this.solve();
+    this.display.hideCheckAnswerButton();
+    this.display.updateMessage("This is the best answer!");
+  }
+
+  win() {
+    this.solve();
+    this.display.hideGiveUpButton();
+    this.display.showCheckAnswerButton();
+    this.display.updateMessage("You Win!");
   }
 
   solve() {
     let solution = this.solver.getBoard();
+    console.log(this.count, this.solver.steps, this.initialRequiredSteps);
     this.display.render(
       solution,
       {
         moves: this.count + this.solver.steps,
         remaining: 0,
-        wasting: this.solver.steps + this.count - this.initial
+        wasting: this.solver.steps + this.count - this.initialRequiredSteps
       },
       function() {}
     );
@@ -62,14 +85,12 @@ class GameController {
     ++this.count
     let remaining = this.solver.solve(this.board);
     if (remaining == 0) {
-      this.display.updateMessage("You Win!");
-      this.solve();
-      this.display.removeGiveUpEvent();
+      this.win();
       return;
     }
     this.display.updateCell(row, col, this.board[row][col]);
     this.display.updateMoves(this.count);
     this.display.updateRemaining(remaining);
-    this.display.updateWasting(remaining + this.count - this.initial);
+    this.display.updateWasting(remaining + this.count - this.initialRequiredSteps);
   }
 }

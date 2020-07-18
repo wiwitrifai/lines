@@ -10,6 +10,7 @@ class DisplayProcessor {
 
     this.startElement = document.querySelector('#start-button');
     this.giveUpElement = document.querySelector('#give-up-button');
+    this.checkAnswerElement = document.querySelector('#check-answer-button');
   }
 
   clearElementChilds(element) {
@@ -54,17 +55,27 @@ class DisplayProcessor {
   }
 
   addGiveUpEvent(callback) {
-    if (this.giveUpCallback)
-      return;
     this.giveUpElement.addEventListener('click', callback);
-    this.giveUpCallback = callback;
   }
 
-  removeGiveUpEvent() {
-    if (this.giveUpCallback) {
-      this.giveUpElement.removeEventListener('click', this.giveUpCallback);
-      this.giveUpCallback = null;
-    }
+  addCheckAnswerEvent(callback) {
+    this.checkAnswerElement.addEventListener('click', callback);
+  }
+
+  showGiveUpButton() {
+    this.giveUpElement.style.display = "block";
+  }
+
+  hideGiveUpButton() {
+    this.giveUpElement.style.display = "none";
+  }
+
+  showCheckAnswerButton() {
+    this.checkAnswerElement.style.display = "block";
+  }
+
+  hideCheckAnswerButton() {
+    this.checkAnswerElement.style.display = "none";
   }
 
   updateCell(row, col, value) {
