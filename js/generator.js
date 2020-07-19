@@ -11,7 +11,7 @@ class Generator {
     for (let i = 0; i < this.height; ++i)
       board[i] = new Array(this.width).fill(0);
 
-    let count = Math.floor((0.8 + Math.random()) * this.height * this.width);
+    let count = Math.floor((0.9 + Math.random()) * this.height * this.width);
 
     for (let cnt = 0; cnt < count; ++cnt) {
       if (Math.random() < 0.5) {

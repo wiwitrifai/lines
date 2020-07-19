@@ -86,7 +86,7 @@ a {
   text-decoration: none;
 }
 
-#how-to-play-button {
+#about-button {
   background-color: mintcream;
 }
 #start-button {
@@ -97,7 +97,7 @@ a {
   background-color: lightcoral;
 }
 
-#check-answer-button {
+#check-solution-button {
   background-color: deepskyblue;
 }
 

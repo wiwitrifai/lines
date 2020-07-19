@@ -6,11 +6,11 @@ class DisplayProcessor {
 
     this.movesElement = document.querySelector('#moves-value');
     this.remainingElement = document.querySelector('#remaining-value');
-    this.wastingElement = document.querySelector('#wasting-value');
+    this.wastedElement = document.querySelector('#wasted-value');
 
     this.startElement = document.querySelector('#start-button');
     this.giveUpElement = document.querySelector('#give-up-button');
-    this.checkAnswerElement = document.querySelector('#check-answer-button');
+    this.CheckSolutionElement = document.querySelector('#check-solution-button');
   }
 
   clearElementChilds(element) {
@@ -47,7 +47,7 @@ class DisplayProcessor {
 
     this.updateMoves(metadata.moves);
     this.updateRemaining(metadata.remaining);
-    this.updateWasting(metadata.wasting);
+    this.updateWasted(metadata.wasted);
   }
 
   addStartEvent(callback) {
@@ -58,8 +58,8 @@ class DisplayProcessor {
     this.giveUpElement.addEventListener('click', callback);
   }
 
-  addCheckAnswerEvent(callback) {
-    this.checkAnswerElement.addEventListener('click', callback);
+  addCheckSolutionEvent(callback) {
+    this.CheckSolutionElement.addEventListener('click', callback);
   }
 
   showGiveUpButton() {
@@ -70,12 +70,12 @@ class DisplayProcessor {
     this.giveUpElement.style.display = "none";
   }
 
-  showCheckAnswerButton() {
-    this.checkAnswerElement.style.display = "block";
+  showCheckSolutionButton() {
+    this.CheckSolutionElement.style.display = "block";
   }
 
-  hideCheckAnswerButton() {
-    this.checkAnswerElement.style.display = "none";
+  hideCheckSolutionButton() {
+    this.CheckSolutionElement.style.display = "none";
   }
 
   updateCell(row, col, value) {
@@ -91,8 +91,8 @@ class DisplayProcessor {
     this.remainingElement.innerHTML = remaining;
   }
 
-  updateWasting(wasting) {
-    this.wastingElement.innerHTML = wasting;
+  updateWasted(wasted) {
+    this.wastedElement.innerHTML = wasted;
   }
 
   updateMessage(message) {
