@@ -104,5 +104,9 @@ a {
 .message {
   text-align: center;
   font-family: courier;
-  font-size: 40px;
+  font-size: 33px;
+}
+
+small {
+  font-size: 22px
 }

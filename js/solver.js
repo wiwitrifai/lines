@@ -129,7 +129,7 @@ class Solver {
       let cur = whose[i];
       if (cur[0] < 0 || ((cur[0] + cur[1]) & 1) == 0) continue;
       for (let e of this.mcmf.graph[i]) {
-        if (e.to <= 2 || e.flow <= 0) continue;
+        if (e.to < 2 || e.flow <= 0) continue;
         let oth = whose[e.to];
         if (cur[0] == oth[0]) {
           board[cur[0]][Math.min(cur[1], oth[1])] |= 2;
