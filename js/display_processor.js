@@ -10,6 +10,7 @@ class DisplayProcessor {
 
     this.startElement = document.querySelector('#start-button');
     this.giveUpElement = document.querySelector('#give-up-button');
+    this.skipElement = document.querySelector('#skip-button');
     this.CheckSolutionElement = document.querySelector('#check-solution-button');
   }
 
@@ -58,24 +59,33 @@ class DisplayProcessor {
     this.giveUpElement.addEventListener('click', callback);
   }
 
+  addSkipEvent(callback) {
+    this.skipElement.addEventListener('click', callback);
+  }
+
   addCheckSolutionEvent(callback) {
     this.CheckSolutionElement.addEventListener('click', callback);
   }
 
-  showGiveUpButton() {
-    this.giveUpElement.style.display = "block";
+  displayGiveUpButton(show) {
+    if (show)
+      this.giveUpElement.style.display = "block";
+    else
+      this.giveUpElement.style.display = "none";
   }
 
-  hideGiveUpButton() {
-    this.giveUpElement.style.display = "none";
+  displaySkipButton(show) {
+    if (show)
+      this.skipElement.style.display = "block";
+    else
+      this.skipElement.style.display = "none";
   }
 
-  showCheckSolutionButton() {
-    this.CheckSolutionElement.style.display = "block";
-  }
-
-  hideCheckSolutionButton() {
-    this.CheckSolutionElement.style.display = "none";
+  displayCheckSolutionButton(show) {
+    if (show)
+      this.CheckSolutionElement.style.display = "block";
+    else
+      this.CheckSolutionElement.style.display = "none";
   }
 
   updateCell(row, col, value) {

@@ -13,6 +13,7 @@ class GameController {
     this.display = new DisplayProcessor();
     this.display.addStartEvent(this.start.bind(this));
     this.display.addGiveUpEvent(this.giveUp.bind(this));
+    this.display.addSkipEvent(this.skipAnimation.bind(this));
     this.display.addCheckSolutionEvent(this.checkSolution.bind(this));
     this.count = 0;
     this.animating = false;
@@ -35,36 +36,44 @@ class GameController {
     );
 
     this.display.updateMessage(null);
-    this.display.showGiveUpButton();
-    this.display.hideCheckSolutionButton();
+    this.display.displayGiveUpButton(true);
+    this.display.displaySkipButton(false);
+    this.display.displayCheckSolutionButton(false);
   }
 
   giveUp() {
-    this.display.hideGiveUpButton();
-    this.display.showCheckSolutionButton();
+    this.display.displayGiveUpButton(false);
+    this.display.displaySkipButton(true);
     this.display.updateMessage("You lose!");
     this.animateSolution();
   }
 
   checkSolution() {
     this.animating = false;
-    let message = "<small>This is the best solution!</small>";
-    let currentRequiredSteps = this.calculate(this.initBoard, this.board);
+    this.board = this.solver.getBoard();
     this.count += this.solver.steps;
+    let message = "<small>This is the only solution!</small>";
+    let currentRequiredSteps = this.calculate(this.initBoard, this.board);
     if (currentRequiredSteps != this.initRequiredSteps) {
       message = "<small>There is a better solution!</small>";
       this.solver.solve(this.initBoard);
+    } else {
+      let anotherSolution = this.solver.findAnotherSolution(this.initBoard, this.board);
+      if (anotherSolution == -1)
+        this.solver.solve(this.initBoard);
+      else
+        message = "<small>There is another solution!</small>";
     }
     this.solver.steps = 0;
     this.showSolution();
-    this.display.hideCheckSolutionButton();
+    this.display.displayCheckSolutionButton(false);
     this.display.updateMessage(message);
   }
 
   win() {
     this.showSolution();
-    this.display.hideGiveUpButton();
-    this.display.showCheckSolutionButton();
+    this.display.displayGiveUpButton(false);
+    this.display.displayCheckSolutionButton(true);
     this.display.updateMessage("You Win!");
   }
 
@@ -79,6 +88,13 @@ class GameController {
       },
       function() {}
     );
+  }
+
+  skipAnimation() {
+    this.animating = false;
+    this.showSolution();
+    this.display.displaySkipButton(false);
+    this.display.displayCheckSolutionButton(true);
   }
 
   async animateSolution() {
@@ -121,6 +137,8 @@ class GameController {
       }
     }
     this.animating = false;
+    this.display.displaySkipButton(false);
+    this.display.displayCheckSolutionButton(true);
   }
 
   rotate(row, col, isClockwise) {

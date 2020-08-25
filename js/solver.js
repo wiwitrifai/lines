@@ -10,7 +10,7 @@ class Solver {
     this.steps = -2;
   }
 
-  solve(board) {
+  solve(board, exclude = new Set()) {
     this.mcmf.clear();
     let costs = new Array(this.height * this.width);
     let source = 0, sink = 1, node = 2;
@@ -81,23 +81,28 @@ class Solver {
       for (let j = 0; j < this.width; ++j) {
         if (i + 1 < this.height) {
           let u = i * this.width + j, v = u + this.width;
+          let ok = !exclude.has(u * 2);
           let sumcost = costs[u][2] + costs[v][0];
           if (((i + j) & 1) == 0) {
             let tmp = u;
             u = v;
             v = tmp;
           }
-          this.mcmf.addEdge(this.verticalNodes[u], this.verticalNodes[v], 1, sumcost);
+          if (ok)
+            this.mcmf.addEdge(this.verticalNodes[u], this.verticalNodes[v], 1, sumcost);
+
         }
         if (j + 1 < this.width) {
           let u = i * this.width + j, v = u + 1;
+          let ok = !exclude.has(u * 2 + 1);
           let sumcost = costs[u][1] + costs[v][3];
           if (((i + j) & 1) == 0) {
             let tmp = u;
             u = v;
             v = tmp;
           }
-          this.mcmf.addEdge(this.horizontalNodes[u], this.horizontalNodes[v], 1, sumcost);
+          if (ok)
+            this.mcmf.addEdge(this.horizontalNodes[u], this.horizontalNodes[v], 1, sumcost);
         }
       }
     }
@@ -156,5 +161,39 @@ class Solver {
       }
     }
     return board;
+  }
+
+  findAnotherSolution(board, oldSolution) {
+    let bestSteps = -1;
+    let exclude = new Set();
+    for (let i = 0; i < this.height; ++i) {
+      for (let j = 0; j < this.width; ++j) {
+        if (i + 1 < this.height) {
+          let u = i * this.width + j, v = u + this.width;
+          if (oldSolution[i][j][2] == '1') {
+            let currentExclude = new Set([u * 2]);
+            let result = this.solve(board, currentExclude);
+            if (result != -1 && (bestSteps == -1 || result < bestSteps)) {
+              bestSteps = result;
+              exclude = currentExclude;
+            }
+          }
+        }
+        if (j + 1 < this.width) {
+          let u = i * this.width + j, v = u + 1;
+          if (oldSolution[i][j][1] == '1') {
+            let currentExclude = new Set([u * 2 + 1]);
+            let result = this.solve(board, currentExclude);
+            if (result != -1 && (bestSteps == -1 || result < bestSteps)) {
+              bestSteps = result;
+              exclude = currentExclude;
+            }
+          }
+        }
+      }
+    }
+    if (bestSteps == -1)
+      return -1;
+    return this.solve(board, exclude);
   }
 }

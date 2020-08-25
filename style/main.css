@@ -97,6 +97,10 @@ a {
   background-color: lightcoral;
 }
 
+#skip-button {
+  background-color: lightgray;
+}
+
 #check-solution-button {
   background-color: deepskyblue;
 }

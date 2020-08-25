@@ -16,7 +16,5 @@ You will be given a 7x11 grid where each cell is one of the following types:
 
 You have to rotate some cells so that the black lines can only end at any red dot.
 
-For more detailed explanation, you can visit [http://wiwitrifai.github.io/lines/how-to-play.html](http://wiwitrifai.github.io/lines/how-to-play.html).
-
 ## License
 This game is licensed under the [MIT License](https://github.com/wiwitrifai/lines/blob/master/LICENSE).
